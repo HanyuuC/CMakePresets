@@ -1,0 +1,36 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "msvc-build",
+            "displayName": "Visual Studio Community 2022 Release - amd64",
+            "description": "Using compilers for Visual Studio 17 2022 (x64 architecture)",
+            "generator": "Visual Studio 17 2022",
+            "toolset": "host=x64",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "BUILD_PANGOLIN_PYTHON": "OFF",
+                "GLEW_INCLUDE_DIR":"D:/Software/glew-2.3.1/include",
+                "GLEW_LIBRARY":"D:/Software/glew-2.3.1/lib/Release/x64/glew32.lib"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "msvc-build-debug",
+            "displayName": "msvc-build-debug",
+            "configurePreset": "msvc-build",
+            "configuration": "Debug"
+        },
+        {
+            "name": "msvc-build-release",
+            "displayName": "msvc-build-release",
+            "configurePreset": "msvc-build",
+            "configuration": "Release"
+        }
+    ]
+}
