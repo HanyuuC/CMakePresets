@@ -2,10 +2,3 @@
 **/
 !*CMakePresets*
 !.gitignore
-
-# .DS_Store
-# CMakeLists.txt.user
-# build*
-# _builds
-# _logs
-# .vscode
