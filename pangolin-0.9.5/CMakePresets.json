@@ -29,7 +29,10 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
                 "CMAKE_C_COMPILER": "/usr/bin/aarch64-linux-gnu-gcc",
                 "CMAKE_CXX_COMPILER": "/usr/bin/aarch64-linux-gnu-g++",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_DEBUG_POSTFIX": "d",
+                "CMAKE_RELEASE_POSTFIX": "",
+                "CMAKE_RELWITHDEBINFO_POSTFIX": "rd",
+                "CMAKE_MINSIZEREL_POSTFIX": "ms"
             }
         }
     ],

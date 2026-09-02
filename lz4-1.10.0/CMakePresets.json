@@ -14,7 +14,9 @@
                 "CMAKE_C_COMPILER": "cl.exe",
                 "CMAKE_CXX_COMPILER": "cl.exe",
                 "CMAKE_DEBUG_POSTFIX": "d",
-                "CMAKE_RELEASE_POSTFIX": ""
+                "CMAKE_RELEASE_POSTFIX": "",
+                "CMAKE_RELWITHDEBINFO_POSTFIX": "rd",
+                "CMAKE_MINSIZEREL_POSTFIX": "ms"
             }
         }
     ],
