@@ -2,27 +2,7 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "ndk-build",
-            "displayName": "spdlog-1.15.3 Configure preset using android ndk",
-            "description": "spdlog build using android ndk, spdlog-1.15.3",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/out/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_TOOLCHAIN_FILE": "$env{ANDROID_SDK}/ndk/23.1.7779620/build/cmake/android.toolchain.cmake",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
-                "CMAKE_MAKE_PROGRAM": "$env{ANDROID_SDK}/cmake/4.1.0/bin/ninja.exe",
-                "CMAKE_DEBUG_POSTFIX": "d",
-                "CMAKE_RELEASE_POSTFIX": "",
-                "CMAKE_RELWITHDEBINFO_POSTFIX": "rd",
-                "CMAKE_MINSIZEREL_POSTFIX": "ms",
-                "ANDROID_ABI": "arm64-v8a",
-                "ANDROID_PLATFORM": "android-26",
-                "ANDROID_STL": "c++_shared"
-            }
-        },
-        {
-            "name": "native-build",
+            "name": "base",
             "hidden": true,
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
@@ -34,20 +14,36 @@
         },
         {
             "name": "native-debug",
-            "displayName": "本机 / Debug",
-            "description": "不声明生成器与架构，由 CMake 取本机默认生成器；此时产物的平台与架构与本机相同",
-            "inherits": "native-build",
+            "displayName": "Native / Debug",
+            "description": "Host default generator; platform and architecture match the host",
+            "inherits": "base",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
             "name": "native-release",
-            "displayName": "本机 / Release",
-            "description": "不声明生成器与架构，由 CMake 取本机默认生成器；此时产物的平台与架构与本机相同",
-            "inherits": "native-build",
+            "displayName": "Native / Release",
+            "description": "Host default generator; platform and architecture match the host",
+            "inherits": "base",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "ndk-build",
+            "displayName": "spdlog-1.15.3 Configure preset using android ndk",
+            "description": "spdlog build using android ndk, spdlog-1.15.3",
+            "inherits": "base",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_TOOLCHAIN_FILE": "$env{ANDROID_SDK}/ndk/23.1.7779620/build/cmake/android.toolchain.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_MAKE_PROGRAM": "$env{ANDROID_SDK}/cmake/4.1.0/bin/ninja.exe",
+                "ANDROID_ABI": "arm64-v8a",
+                "ANDROID_PLATFORM": "android-26",
+                "ANDROID_STL": "c++_shared"
             }
         }
     ],

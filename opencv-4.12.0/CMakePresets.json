@@ -2,70 +2,70 @@
     "version": 8,
     "configurePresets": [
         {
+            "name": "base",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_DEBUG_POSTFIX": "d",
+                "CMAKE_RELEASE_POSTFIX": "",
+                "CMAKE_RELWITHDEBINFO_POSTFIX": "rd",
+                "CMAKE_MINSIZEREL_POSTFIX": "ms",
+                "OPENCV_EXTRA_MODULES_PATH": "${sourceDir}/../opencv_contrib/modules",
+                "BUILD_JAVA": "OFF",
+                "BUILD_opencv_apps": "OFF",
+                "BUILD_TESTS": "OFF",
+                "BUILD_PERF_TESTS": "OFF",
+                "BUILD_EXAMPLES": "OFF"
+            }
+        },
+        {
+            "name": "native-debug",
+            "displayName": "Native / Debug",
+            "description": "Host default generator; platform and architecture match the host",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+            }
+        },
+        {
+            "name": "native-release",
+            "displayName": "Native / Release",
+            "description": "Host default generator; platform and architecture match the host",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+            }
+        },
+        {
             "name": "ndk-build",
             "displayName": "opencv-4.12.0 Configure preset using android ndk",
             "description": "opencv build using android ndk, opencv-4.12.0",
+            "inherits": "base",
             "generator": "Ninja",
-            "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_TOOLCHAIN_FILE": "$env{ANDROID_SDK}/ndk/23.1.7779620/build/cmake/android.toolchain.cmake",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
                 "CMAKE_MAKE_PROGRAM": "$env{ANDROID_SDK}/cmake/4.1.0/bin/ninja.exe",
-                "CMAKE_DEBUG_POSTFIX": "d",
-                "CMAKE_RELEASE_POSTFIX": "",
-                "CMAKE_RELWITHDEBINFO_POSTFIX": "rd",
-                "CMAKE_MINSIZEREL_POSTFIX": "ms",
                 "ANDROID_ABI": "arm64-v8a",
                 "ANDROID_PLATFORM": "android-26",
                 "ANDROID_STL": "c++_shared",
-                "OPENCV_EXTRA_MODULES_PATH": "${sourceDir}/../opencv_contrib/modules",
                 "BUILD_ANDROID_PROJECTS": "OFF",
-                "BUILD_ANDROID_EXAMPLES": "OFF",
-                "BUILD_JAVA": "OFF",
-                "BUILD_opencv_apps": "OFF",
-                "BUILD_TESTS": "OFF",
-                "BUILD_PERF_TESTS": "OFF",
-                "BUILD_EXAMPLES": "OFF"
-            }
-        },
-        {
-            "name": "msvc-build",
-            "displayName": "Visual Studio Community 2022 - amd64",
-            "description": "Using compilers for Visual Studio 17 2022 (x64 architecture)",
-            "generator": "Visual Studio 17 2022",
-            "toolset": "host=x64",
-            "architecture": "x64",
-            "binaryDir": "${sourceDir}/out/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
-                "CMAKE_C_COMPILER": "cl.exe",
-                "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_DEBUG_POSTFIX": "d",
-                "CMAKE_RELEASE_POSTFIX": "",
-                "CMAKE_RELWITHDEBINFO_POSTFIX": "rd",
-                "CMAKE_MINSIZEREL_POSTFIX": "ms",
-                "OPENCV_EXTRA_MODULES_PATH": "${sourceDir}/../opencv_contrib/modules",
-                "BUILD_JAVA": "OFF",
-                "BUILD_opencv_apps": "OFF",
-                "BUILD_TESTS": "OFF",
-                "BUILD_PERF_TESTS": "OFF",
-                "BUILD_EXAMPLES": "OFF"
-                
+                "BUILD_ANDROID_EXAMPLES": "OFF"
             }
         }
     ],
     "buildPresets": [
         {
-            "name": "msvc-build-debug",
-            "displayName": "msvc-build-debug",
-            "configurePreset": "msvc-build",
+            "name": "native-debug",
+            "configurePreset": "native-debug",
             "configuration": "Debug"
         },
         {
-            "name": "msvc-build-release",
-            "displayName": "msvc-build-release",
-            "configurePreset": "msvc-build",
+            "name": "native-release",
+            "configurePreset": "native-release",
             "configuration": "Release"
         }
     ]
