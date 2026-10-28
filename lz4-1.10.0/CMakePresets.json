@@ -6,6 +6,7 @@
             "hidden": true,
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
+                "CMAKE_POSITION_INDEPENDENT_CODE": "ON",
                 "BUILD_SHARED_LIBS": "OFF",
                 "CMAKE_DEBUG_POSTFIX": "d",
                 "CMAKE_RELEASE_POSTFIX": "",
