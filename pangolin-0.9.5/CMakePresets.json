@@ -20,8 +20,7 @@
             "description": "Host default generator; platform and architecture match the host",
             "inherits": "base",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+                "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
@@ -30,8 +29,7 @@
             "description": "Host default generator; platform and architecture match the host",
             "inherits": "base",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
+                "CMAKE_BUILD_TYPE": "Release"
             }
         },
         {
